@@ -4,23 +4,27 @@ import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
 import io.cucumber.java.en.*;
+import org.apache.log4j.Logger;
 import org.junit.Assert;
 
 import java.util.Map;
 
 public class LoginStepDefinitions {
+
+   private static Logger logger=Logger.getLogger( LoginStepDefinitions.class);
     // Write code here that turns the phrase above into concrete actions
     LoginPage loginPage = new LoginPage();//created login page object
 
     @Given("user is on the login page")
     public void user_is_on_the_login_page() {
-        System.out.println("I am on the login page");
+        logger.info("I am on the login page");
         Driver.get().get(ConfigurationReader.getProperty("url"));
     }
 
     @Then("user logs in as store manager")
     public void user_logs_in_as_store_manager() {
-        System.out.println("Login as store manager");
+       logger.info("Login as store manager ");
+        // System.out.println("Login as store manager");
         //we read username and password from properties file
         //usually in java we use camel case for naming variables
         String userName = ConfigurationReader.getProperty("user_name");
@@ -36,7 +40,8 @@ public class LoginStepDefinitions {
         loginPage.waitUntilLoaderMaskDisappear();
         BrowserUtils.wait(5);
     Assert.assertEquals(string, loginPage.getPageSubTitle());
-        System.out.println("Verifying page subtitle: " + string);
+        logger.info("Verifying page subtitle: \" + string");
+    //System.out.println("Verifying page subtitle: " + string);
     }
 
     @Then("user logs in as driver")
@@ -60,6 +65,11 @@ public class LoginStepDefinitions {
     public void user_verifies_that_message_is_displayed(String string) {
         System.out.println("Verified that warning message is displayed: "+string);
     }
+/*
+     Then user logs in as driver with following credentials
+           | username|user160|
+           |password |UserUser123|
+  */
 
     @Then("user logs in as driver with following credentials")
     public void user_logs_in_as_driver_with_following_credentials(Map<String ,String>dataTable) {
@@ -82,4 +92,7 @@ public class LoginStepDefinitions {
     }
 
 
+    @And("user verifies that {string}page subtitle is displayed")
+    public void userVerifiesThatPageSubtitleIsDisplayed(String arg0) {
+    }
 }

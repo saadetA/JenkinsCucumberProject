@@ -16,8 +16,8 @@ LoginPage loginPage=new LoginPage();
 
     @Then("user verifies that {string}  is displayed")
     public void user_verifies_that_message_is_displayed(String string) {
-        System.out.println("Verified All Dashboards is displayed: "+string);
-    }
+       System.out.println("Verified All Dashboards is displayed: "+string);
+   }
 
 
 

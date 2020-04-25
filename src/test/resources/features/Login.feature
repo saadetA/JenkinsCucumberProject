@@ -18,7 +18,7 @@ Feature: Login
   Scenario: Login as driver
     Given user is on the login page
     Then user logs in as driver
-    And user verifies that "Dashboard"page subtitle is displayed
+   # And user verifies that "Dashboard"page subtitle is displayed
 
   @sale_manager
   Scenario: Login as sale manager

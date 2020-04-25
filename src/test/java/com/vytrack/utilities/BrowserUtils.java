@@ -66,8 +66,10 @@ public class BrowserUtils {
      * @param element
      */
     public static void clickWithJS(WebElement element) {
-        ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].scrollIntoView(true);", element);
-        ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].click();", element);
+      JavascriptExecutor js=  ((JavascriptExecutor) Driver.get());
+      js.executeScript("arguments[0].scrollIntoView(true);", element);
+       JavascriptExecutor js2= ((JavascriptExecutor) Driver.get());
+               js2.executeScript("arguments[0].click();", element);
     }
 
     /**
@@ -171,16 +173,16 @@ public class BrowserUtils {
      *dropdowndaki optionlari dondurur
      * @param listOfWebElements
      * @return list of strings
-     */
+**/
     public static List<String> getListOfString(List<WebElement> listOfWebElements) {
-        List<String> listOfStrings = new ArrayList<>();
-        for (WebElement element : listOfWebElements) {
-            listOfStrings.add(element.getText().trim());
-        }
-        return listOfStrings;
+    List<String> listOfStrings = new ArrayList<>();
+    for (WebElement element : listOfWebElements) {
+    String value = element.getText().trim();
+    if(value.length()>0){
+    listOfStrings.add(value);}
     }
-
-
+    return listOfStrings;
+    }
 
 
 

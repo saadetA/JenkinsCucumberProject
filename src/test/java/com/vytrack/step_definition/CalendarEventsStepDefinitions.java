@@ -23,7 +23,7 @@ public class CalendarEventsStepDefinitions {
     public void user_verifies_that_column_names_are_displayed(List<String> dataTable) {
         System.out.println(dataTable);
         calendarEventsPage.waitUntilLoaderMaskDisappear();
-        BrowserUtils.wait(3);
+       // BrowserUtils.wait(3);
         Assert.assertEquals(dataTable, calendarEventsPage.getColumnNames());
     }
 
